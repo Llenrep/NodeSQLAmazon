@@ -44,7 +44,7 @@ If you haven't written a markdown file yet, [click here for a rundown](https://g
 
 4. Populate this database with around 10 different products. (i.e. Insert "mock" data rows into this database and table).
 
-5. Then create a Node application called `bamazonCustomer.js`. Running this application will first display all of the items available for sale. Include the ids, names, and prices of products for sale.
+5. Then create a Node application called `bamazonCustomer.js`. Running this application will first display all of the items available for sale. Include the ids, names, and prices of products for sale. //Im here, Looking for an actual table. I have it set up as a regular lil map, but I need more than that.
 
 6. The app should then prompt users with two messages.
 

@@ -1,0 +1,28 @@
+{
+  "name": "nodesqlamazon",
+  "version": "1.0.0",
+  "description": "bootleg amazon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Llenrep/NodeSQLAmazon.git"
+  },
+  "keywords": [
+    "bootleg",
+    "amazon"
+  ],
+  "author": "Pernell Louis-Pierre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Llenrep/NodeSQLAmazon/issues"
+  },
+  "homepage": "https://github.com/Llenrep/NodeSQLAmazon#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "inquirer": "^6.2.1",
+    "mysql": "^2.16.0"
+  }
+}
