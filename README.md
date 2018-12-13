@@ -1,12 +1,12 @@
 # NodeSQLAmazon
 a bootleg amazon application using node and sql as a database!
 
-###### Purpose
+# Purpose
 The point of the program is to be able to act in somewhat of an amazon fashion,
 where a user is able to "purchase" an item, and after purchasing, the quantity should go down
 based off of the amount that the user purchases. 
 
-###### Detail
+# Detail
 When running the program, the user will be prompted with a table of the items.
 The table will of course display the number item, the name, the department, and other
 data pertaining to the item. 
@@ -17,7 +17,7 @@ I am going to create a method with which there is going to be "manager access" a
 difference is the functionality between the two and the original "BamazonCustomer" js file.
 This should add a more "realistic" feel to it.
 
-# Extra Stuff
+###### Extra Stuff
 I had an idea in mind to keep myself busy where if I get this done early, I will attach whatever I can
 to an actual html and see if I can get the thing up and running with the database. 
 
