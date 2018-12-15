@@ -1,18 +1,3 @@
-// table.push(
-//     [res[0].item_id, res[0].product_name, res[0].department_name, res[0].price, res[0].stock_quantity],
-//     [res[1].item_id, res[1].product_name, res[1].department_name, res[1].price, res[1].stock_quantity],
-//     [res[2].item_id, res[2].product_name, res[2].department_name, res[2].price, res[2].stock_quantity],
-//     [res[3].item_id, res[3].product_name, res[3].department_name, res[3].price, res[3].stock_quantity],
-//     [res[4].item_id, res[4].product_name, res[4].department_name, res[4].price, res[4].stock_quantity],
-//     [res[5].item_id, res[5].product_name, res[5].department_name, res[5].price, res[5].stock_quantity],
-//     [res[6].item_id, res[6].product_name, res[6].department_name, res[6].price, res[6].stock_quantity],
-//     [res[7].item_id, res[7].product_name, res[7].department_name, res[7].price, res[7].stock_quantity],
-//     [res[8].item_id, res[8].product_name, res[8].department_name, res[8].price, res[8].stock_quantity],
-//     [res[9].item_id, res[9].product_name, res[9].department_name, res[9].price, res[9].stock_quantity]
-// );
-//Right now, this works, but theres gotta be a way to put this in a for loop so that way when I add new items, it can be done faster.
-
-
 var mysql = require("mysql");
 var Table = require('cli-table');
 var colors = require('colors');
@@ -36,13 +21,39 @@ var connection = mysql.createConnection({
     database: "bamazon"
 });
 
+
 connection.connect(function (err) { //this portion simply establishes the connection to MAMP
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-    displayProducts();
-});
+})
+function introduction() {
+    inquirer
+        .prompt({
+            name: "decision",
+            type: "list",
+            choices: ["View Products for Sale", "View Low Inventory", "Add to Inventory", "Add New Product\n"]
+        })
+        .then(function (answers) {
 
-
+            if (answers.decision == "View Products for Sale") {
+                console.log("View Products.....")
+                displayProducts();
+            }
+            else if (answers.decision == "View Low Inventory") {
+                console.log("Viewing Lower Inventory")
+                connection.end();
+            }
+            else if (answers.decision == "Add to Inventory") {
+                console.log("Adding To Inventory")
+                addProduct();
+            }
+            else if (answers.decision == "Add New Product") {
+                console.log("Add New Product")
+                connection.end();
+            }
+        });
+}
+introduction();
 
 function displayProducts() {
     connection.query("SELECT * FROM products", function (err, res) {
@@ -71,4 +82,23 @@ function displayProducts() {
         var theTable = table.toString();
         console.log(theTable);
     });
+    introduction();
+}
+
+function addProduct() {
+    var questions = ["Whats The Name Of The Product?: ", "Give It A Section: ", "How Much Does It Cost?: ", "How Many Of This Do We Got?: "];
+    inquirer.prompt(questions, function (answers) {
+        connection.query("INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) VALUES (" + (totalItems+1),+","+answers[0],+","+answers[1],+","+answers[2],+","+
+        answers[3] + ")");
+        console.log("so what");
+    });
+    //     inquirer
+    //   .prompt({
+    //     name: "Fill Out The Form",
+    //     type: "input",
+
+    //     })
+    //   .then(answers => {
+    //     // Use user feedback for... whatever!!
+    //   }); 
 }
